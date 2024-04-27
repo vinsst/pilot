@@ -1,15 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import plusCircle from "../assets/img/plus-circle.svg";
 import bin from "../assets/img/bin.svg";
 import checkbox from "../assets/img/checkbox.svg";
 import galka from "../assets/img/galka.svg";
 import CheckboxNonFilled from "../assets/img/CheckboxNonFilled.svg";
 
-function Review() {
-  const [fieldsCount, setFieldsCount] = useState(1);
-  const [boxClicked, setBoxClicked] = useState(false);
+import { useSelector, useDispatch } from "react-redux";
+import { increment } from "../redux/actions";
 
-  const filling = () => setBoxClicked(!boxClicked);
+function Review() {
+  let x = 1;
+  const [fieldsCount, setFieldsCount] = useState(x);
+  const [boxClicked, setboxClicked] = useState(false);
+  const filling = () => setboxClicked(!boxClicked);
+
+  const counterReducer = useSelector((state) => state.counterReducer[x] || 1);
+  const dispatch = useDispatch();
+  const fieldsCounter = () => {
+    let updatedFieldsCount = fieldsCount;
+    dispatch(increment(x));
+    updatedFieldsCount++;
+    setFieldsCount(updatedFieldsCount);
+  };
 
   const renderFields = () => {
     let fields = [];
@@ -44,10 +56,6 @@ function Review() {
       );
     }
     return fields;
-  };
-
-  const fieldsCounter = () => {
-    setFieldsCount(fieldsCount + 1);
   };
 
   return (

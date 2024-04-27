@@ -1,12 +1,12 @@
 import React from "react";
 
-import Review from "./pages/review";
+import Group from "./pages/group";
 
 function App() {
   return (
     <div className="wrapper">
       <div className="content">
-        <Review />
+        <Group />
       </div>
     </div>
   );

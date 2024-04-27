@@ -1,6 +1,6 @@
 export const increment = (x) => {
   return {
-    type: "LIKE-INCREMENT",
+    type: "INCREMENT",
     x,
   };
 };

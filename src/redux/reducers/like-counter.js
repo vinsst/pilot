@@ -1,7 +1,6 @@
-// like-counter.js
 const counterReducer = (state = {}, action) => {
   switch (action.type) {
-    case "LIKE-INCREMENT":
+    case "INCREMENT":
       return {
         ...state,
         [action.x]: (state[action.x] || 0) + 1,
